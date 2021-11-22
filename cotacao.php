@@ -244,7 +244,7 @@
     <div class="main-header__main-line">
         <div class="aheto-logo main-header__logo">
             <a href="index.php">
-				<img width="358" height="83" src="wp-content/uploads/2021/11/logo.png" class="aheto-logo__image" alt="" loading="lazy" srcset="http://enviosinternacionais.com/wp-content/uploads/2021/11/logo.png 358w, http://enviosinternacionais.com/wp-content/uploads/2021/11/logo-300x70.png 300w" sizes="(max-width: 358px) 100vw, 358px" /><img width="358" height="83" src="wp-content/uploads/2021/11/logo.png" class="aheto-logo__image aheto-logo__image-scroll" alt="" loading="lazy" srcset="http://enviosinternacionais.com/wp-content/uploads/2021/11/logo.png 358w, http://enviosinternacionais.com/wp-content/uploads/2021/11/logo-300x70.png 300w" sizes="(max-width: 358px) 100vw, 358px" /><img width="358" height="83" src="wp-content/uploads/2021/11/logo.png" class="aheto-logo__image mob-logo" alt="" loading="lazy" srcset="http://enviosinternacionais.com/wp-content/uploads/2021/11/logo.png 358w, http://enviosinternacionais.com/wp-content/uploads/2021/11/logo-300x70.png 300w" sizes="(max-width: 358px) 100vw, 358px" /><img width="358" height="83" src="wp-content/uploads/2021/11/logo.png" class="aheto-logo__image mob-logo aheto-logo__image-mob-scroll" alt="" loading="lazy" srcset="http://enviosinternacionais.com/wp-content/uploads/2021/11/logo.png 358w, http://enviosinternacionais.com/wp-content/uploads/2021/11/logo-300x70.png 300w" sizes="(max-width: 358px) 100vw, 358px" />            </a>
+				<img width="358" height="83" src="wp-content/uploads/2021/11/logo.png" class="aheto-logo__image" alt="" loading="lazy" srcset="https://enviosinternacionais.com/wp-content/uploads/2021/11/logo.png 358w, https://enviosinternacionais.com/wp-content/uploads/2021/11/logo-300x70.png 300w" sizes="(max-width: 358px) 100vw, 358px" /><img width="358" height="83" src="wp-content/uploads/2021/11/logo.png" class="aheto-logo__image aheto-logo__image-scroll" alt="" loading="lazy" srcset="https://enviosinternacionais.com/wp-content/uploads/2021/11/logo.png 358w, https://enviosinternacionais.com/wp-content/uploads/2021/11/logo-300x70.png 300w" sizes="(max-width: 358px) 100vw, 358px" /><img width="358" height="83" src="wp-content/uploads/2021/11/logo.png" class="aheto-logo__image mob-logo" alt="" loading="lazy" srcset="https://enviosinternacionais.com/wp-content/uploads/2021/11/logo.png 358w, https://enviosinternacionais.com/wp-content/uploads/2021/11/logo-300x70.png 300w" sizes="(max-width: 358px) 100vw, 358px" /><img width="358" height="83" src="wp-content/uploads/2021/11/logo.png" class="aheto-logo__image mob-logo aheto-logo__image-mob-scroll" alt="" loading="lazy" srcset="https://enviosinternacionais.com/wp-content/uploads/2021/11/logo.png 358w, https://enviosinternacionais.com/wp-content/uploads/2021/11/logo-300x70.png 300w" sizes="(max-width: 358px) 100vw, 358px" />            </a>
         </div>
         <div class="main-header__menu-box">
 
@@ -673,7 +673,7 @@ echo "<style>
 			<div class="elementor-widget-wrap elementor-element-populated">
 								<div class="elementor-element elementor-element-7f60db7a elementor-widget elementor-widget-image" data-id="7f60db7a" data-element_type="widget" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-															<img width="300" height="70" src="wp-content/uploads/2021/11/logo-300x70.png" class="attachment-medium size-medium" alt="" loading="lazy" srcset="http://enviosinternacionais.com/wp-content/uploads/2021/11/logo-300x70.png 300w, http://enviosinternacionais.com/wp-content/uploads/2021/11/logo.png 358w" sizes="(max-width: 300px) 100vw, 300px" />															</div>
+															<img width="300" height="70" src="wp-content/uploads/2021/11/logo-300x70.png" class="attachment-medium size-medium" alt="" loading="lazy" srcset="https://enviosinternacionais.com/wp-content/uploads/2021/11/logo-300x70.png 300w, https://enviosinternacionais.com/wp-content/uploads/2021/11/logo.png 358w" sizes="(max-width: 300px) 100vw, 300px" />															</div>
 				</div>
 					</div>
 		</div>
@@ -737,7 +737,7 @@ Prado Velho, Curitiba - PR - Brasil
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form role="search" method="get" class="search-form" action="http://enviosinternacionais.com/"
+                        <form role="search" method="get" class="search-form" action="https://enviosinternacionais.com/"
                               autocomplete="off">
                             <div class="input-group">
                                 <input type="search" value="" name="s" class="search-field"
@@ -773,23 +773,17 @@ Prado Velho, Curitiba - PR - Brasil
 <script type='text/javascript' src='wp-content/plugins/booked/assets/js/spin.jquery7406.js?ver=2.0.1' id='booked-spin-jquery-js'></script>
 <script type='text/javascript' src='wp-content/plugins/booked/assets/js/tooltipster/js/jquery.tooltipster.min9b70.js?ver=3.3.0' id='booked-tooltipster-js'></script>
 <script type='text/javascript' id='booked-functions-js-extra'>
-/* <![CDATA[ */
-var booked_js_vars = {"ajax_url":"http:\/\/enviosinternacionais.com\/wp-admin\/admin-ajax.php","profilePage":"","publicAppointments":"","i18n_confirm_appt_delete":"Are you sure you want to cancel this appointment?","i18n_please_wait":"Please wait ...","i18n_wrong_username_pass":"Wrong username\/password combination.","i18n_fill_out_required_fields":"Please fill out all required fields.","i18n_guest_appt_required_fields":"Please enter your name to book an appointment.","i18n_appt_required_fields":"Please enter your name, your email address and choose a password to book an appointment.","i18n_appt_required_fields_guest":"Please fill in all \"Information\" fields.","i18n_password_reset":"Please check your email for instructions on resetting your password.","i18n_password_reset_error":"That username or email is not recognized."};
-/* ]]> */
+
 </script>
 <script type='text/javascript' src='wp-content/plugins/booked/assets/js/functions25b6.js?ver=2.3.5' id='booked-functions-js'></script>
 <script type='text/javascript' id='frontend-js-js-extra'>
-/* <![CDATA[ */
-var get = {"ajaxurl":"http:\/\/enviosinternacionais.com\/wp-admin\/admin-ajax.php"};
-/* ]]> */
+
 </script>
 <script type='text/javascript' src='wp-content/plugins/aheto/assets/frontend/js/frontend8a54.js?ver=1.0.0' id='frontend-js-js'></script>
 <script type='text/javascript' src='wp-includes/js/dist/vendor/regenerator-runtime.minb36a.js?ver=0.13.7' id='regenerator-runtime-js'></script>
 <script type='text/javascript' src='wp-includes/js/dist/vendor/wp-polyfill.min2c7c.js?ver=3.15.0' id='wp-polyfill-js'></script>
 <script type='text/javascript' id='contact-form-7-js-extra'>
-/* <![CDATA[ */
-var wpcf7 = {"api":{"root":"http:\/\/enviosinternacionais.com\/wp-json\/","namespace":"contact-form-7\/v1"}};
-/* ]]> */
+
 </script>
 <script type='text/javascript' src='wp-content/plugins/contact-form-7/includes/js/indexd03b.js?ver=5.5.1' id='contact-form-7-js'></script>
 <script type='text/javascript' src='wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.minb106.js?ver=2.7.0-wc.5.8.0' id='jquery-blockui-js'></script>
