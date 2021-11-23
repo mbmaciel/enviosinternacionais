@@ -272,7 +272,7 @@
 			
 <div class="aheto-heading aheto-heading--moovit__simple t-center align-mob-default aheto_heading_619403f80ba8e ">
 
-	<h1 class="aheto-heading__title">Faça uma <span class="moovit-dot dot-primary">cotação</span></h1>
+	<h1 class="aheto-heading__title">Sobre a Empresa</h1>
 </div>
 		</div>
 				</div>
@@ -289,7 +289,6 @@
 			
 <div class="aheto-heading aheto-heading--moovit__simple t-center align-mob-default aheto_heading_619403f80c76d ">
 
-	<h5 class="aheto-heading__title">Preencha os dados abaixo corretamente e aguarde a resposta do sistema.</h5>
 </div>
 		</div>
 				</div>
@@ -310,7 +309,7 @@
 			
 <div class="aheto-heading aheto-heading--moovit__simple t-center align-mob-default aheto_heading_619403f80d97e ">
 
-	<h5 class="aheto-heading__subtitle">COTAÇÃO</h5><h2 class="aheto-heading__title">Preencha o <span class="moovit-dot dot-primary">formulário</span></h2>
+	<h5 class="aheto-heading__subtitle">Sobre a empresa</h5>
 </div>
 		</div>
 				</div>
@@ -326,256 +325,7 @@
 				<div class="elementor-widget-container">
 					<div class="elementor-shortcode">
 
-<!-- Formulário de Cotação -->
 
-<?php
-if(isset($_POST['enviar']))
-
-{
-
-require_once(__DIR__.'/vendor/autoload.php');
-
-$name = $_REQUEST['name'];
-$company = $_REQUEST['company'];
-$street1 = $_REQUEST['street1'];
-$phone = $_REQUEST['phone'];
-$email = $_REQUEST['email'];
-$city = $_REQUEST['city'];
-$state = $_REQUEST['state'];
-$country = $_REQUEST['country'];
-$zip = $_REQUEST['zip'];
-
-
-$d_name = $_REQUEST['d_name'];
-$d_company = $_REQUEST['d_company'];
-$d_street1 = $_REQUEST['d_street1'];
-$d_phone = $_REQUEST['d_phone'];
-$d_email = $_REQUEST['d_email'];
-$d_city = $_REQUEST['d_city'];
-$d_state = $_REQUEST['d_state'];
-$d_country = $_REQUEST['d_country'];
-$d_zip = $_REQUEST['d_zip'];
-
-
-//die (var_dump($name, $street1, $city, $state, $country, $zip));
-
-#Shippo::setApiKey('shippo_live_83753381017589b6ef012e9814becaa25a77dddc');
-Shippo::setApiKey('shippo_test_93f9dd4b3cc19aa98ff447d87b6508b461378e88');
-
-// Example from_address array
-// The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
-$from_address = array(
-    'name' => $name,
-    'company' => $company,
-    'street1' => $street1,
-    'city' => $city,
-    'state' => $state,
-    'zip' => $zip,
-    'country' => $country,
-    'phone' => $phone,
-    'email' => $email,
-);
-
-// Example to_address array
-// The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
-	$to_address = array(
-    'name' => $d_name,
-    'company' => $d_company,
-    'street1' => $d_street1,
-    'city' => $d_city,
-    'state' => $d_state,
-    'zip' => $d_zip,
-    'country' => $d_country,
-		'phone' => $d_phone,
-		'email' => $d_email,
-);
-
-// Parcel information array
-// The complete reference for parcel object is here: https://goshippo.com/docs/reference#parcels
-$parcel = array(
-    'length'=> '5',
-    'width'=> '5',
-    'height'=> '5',
-    'distance_unit'=> 'in',
-    'weight'=> '2',
-    'mass_unit'=> 'lb',
-);
-
-// Example shipment object
-// For complete reference to the shipment object: https://goshippo.com/docs/reference#shipments
-// This object has async=false, indicating that the function will wait until all rates are generated before it returns.
-// By default, Shippo handles responses asynchronously. However this will be depreciated soon. Learn more: https://goshippo.com/docs/async
-$shipment = Shippo_Shipment::create(
-array(
-    'address_from'=> $from_address,
-    'address_to'=> $to_address,
-    'parcels'=> array($parcel),
-    'async'=> false,
-));
-
-// Rates are stored in the `rates` array inside the shipment object
-$rates = $shipment['rates'];
-
-// You can now show those rates to the user in your UI.
-// Most likely you want to show some of the following fields:
-//  - provider (carrier name)
-//  - servicelevel_name
-//  - amount (price of label - you could add e.g. a 10% markup here)
-//  - days (transit time)
-// Don't forget to store the `object_id` of each Rate so that you can use it for the label purchase later.
-// The details on all of the fields in the returned object are here: https://goshippo.com/docs/reference#rates
-echo "<h3>Cotaçoes Disponíveis:" . "</h3>\n";
-foreach ($rates as $rate) {
-    echo "<h5>" . $rate['provider'] . " - " . $rate['servicelevel']['name'] . "</h5>\n";
-    echo "<li>" . "Preço: "             . $rate['amount'] . "</li>";
-    echo "<li>" . "Prazo para entregar: "   . $rate['days'] . "</li>";
-}
-echo "\n\n";
-
-// This would be the index of the rate selected by the user
-$selected_rate_index = count($rates) - 1;
-
-// After the user has selected a rate, use the corresponding object_id
-$selected_rate = $rates[$selected_rate_index];
-$selected_rate_object_id = $selected_rate['object_id'];
-
-
-// Purchase the desired rate with a transaction request
-// Set async=false, indicating that the function will wait until the carrier returns a shipping label before it returns
-$transaction = Shippo_Transaction::create(array(
-    'rate'=> $selected_rate_object_id,
-    'async'=> false,
-));
-
-// Print the shipping label from label_url
-// Get the tracking number from tracking_number
-if ($transaction['status'] == 'SUCCESS'){
-    echo "<h5>" . "Link para a etiqueta: </h5>\n <li><a href='". $transaction['label_url'] ." target='_blank'> Clique aqui </a></li>\n";
-    echo "<li>" . "Código de rastreio: " . $transaction['tracking_number'] . "</li>\n";
-} else {
-    echo "Transaction failed with messages:" . "\n";
-    foreach ($transaction['messages'] as $message) {
-        echo "--> " . $message . "\n";
-    }
-}
-// For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our
-// complete documentation: https://goshippo.com/docs/
-echo "<style>
-#address-form {
-	display: none;
-}
-</style>";
-
-}
-
-?>
-
-
-  <form id="address-form" action="" autocomplete="off"method="POST">
-	
-	<h5>Dados do Remetente</h5>
-
-
-  <div class="form-group">
-    <label class="form-control" for="exampleInputNome1">Nome</label>
-    <input type="text" class="form-control" id="name" name="name" required >
-  </div>
-
-	<div class="form-group">
-    <label class="form-control" for="exampleInputNome1">Empresa</label>
-    <input type="text" class="form-control" id="company" name="company" >
-  </div>
-
-	<div class="form-group">
-    <label for="cidade">Telefone</label>
-    <input type="text" class="form-control" id="phone" name="phone" required >
-  </div>
-
-	<div class="form-group">
-    <label for="cidade">Email</label>
-    <input type="email" class="form-control" id="email" name="email" required >
-  </div>
-
-  <div class="form-group">
-    <label class="form-control" for="Inputstreet1">Endereço</label>
-    <input type="text" class="form-control" id="street1"  name="street1" aria-describedby="enderecoHelp" placeholder="Entre com o endereço" required>
-    <small id="enderecoHelp" class="form-text text-muted">Digite a rua e o número do endereço.</small>
-  </div>
-
-  <div class="form-group">
-    <label for="cidade">Cidade</label>
-    <input type="text" class="form-control" id="city" name="city" required >
-  </div>
-
-  <div class="form-group">
-    <label for="cep">CEP</label>
-    <input type="text" class="form-control" id="zip" name="zip" required>
-  </div>
-
-  <div class="form-group">
-    <label for="cidade">Estado</label>
-    <input type="text" class="form-control" id="state" name="state" required >
-  </div>
-
-  <div class="form-group">
-    <label for="pais">País</label>
-    <input type="text" class="form-control" id="country" name="country" required>
-  </div>
-
-
-<h5>Dados do Destinatário</h5>
-
-
-<div class="form-group">
-    <label class="form-control" for="exampleInputNome1">Nome</label>
-    <input type="text" class="form-control" id="d_name" name="d_name" required>
-  </div>
-
-	<div class="form-group">
-    <label class="form-control" for="exampleInputNome1">Empresa</label>
-    <input type="text" class="form-control" id="d_company" name="d_company" >
-  </div>
-
-	<div class="form-group">
-    <label for="cidade">Telefone</label>
-    <input type="text" class="form-control" id="d_phone" name="d_phone" required >
-  </div>
-
-	<div class="form-group">
-    <label for="cidade">Email</label>
-    <input type="email" class="form-control" id="d_email" name="d_email" required >
-  </div>
-
-  <div class="form-group">
-    <label class="form-control" for="Inputstreet1">Endereço</label>
-    <input type="text" class="form-control" id="d_street1"  name="d_street1" aria-describedby="enderecoHelp" placeholder="Entre com o endereço" required>
-    <small id="enderecoHelp" class="form-text text-muted">Digite a rua e o número do endereço.</small>
-  </div>
-
-  <div class="form-group">
-    <label for="cidade">Cidade</label>
-    <input type="text" class="form-control" id="d_city" name="d_city" required>
-  </div>
-
-  <div class="form-group">
-    <label for="cep">CEP</label>
-    <input type="text" class="form-control" id="d_zip" name="d_zip" required>
-  </div>
-
-  <div class="form-group">
-    <label for="cidade">Estado</label>
-    <input type="text" class="form-control" id="d_state" name="d_state" required>
-  </div>
-
-  <div class="form-group">
-    <label for="pais">País</label>
-    <input type="text" class="form-control" id="d_country" name="d_country" required>
-  </div>
-
-
-
-  <input type="submit" class="btn btn-primary btn-user btn-block" value="Enviar" name="enviar">
-</form>
 
  <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
  <script
