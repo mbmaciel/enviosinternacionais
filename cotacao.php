@@ -769,10 +769,6 @@ Prado Velho, Curitiba - PR - Brasil
 <link rel='stylesheet' id='moovit-heading-simple-css'  href='wp-content/themes/moovit/aheto/heading/assets/css/cs_layout1.css' type='text/css' media='all' />
 <link rel='stylesheet' id='heading-style-1-css'  href='wp-content/plugins/aheto/shortcodes/heading/assets/css/layout1.css' type='text/css' media='all' />
 <link rel='stylesheet' id='e-animations-css'  href='wp-content/plugins/elementor/assets/lib/animations/animations.min9bf7.css?ver=3.4.6' type='text/css' media='all' />
-<script type='text/javascript' src='wp-content/plugins/booked/assets/js/spin.min7406.js?ver=2.0.1' id='booked-spin-js-js'></script>
-<script type='text/javascript' src='wp-content/plugins/booked/assets/js/spin.jquery7406.js?ver=2.0.1' id='booked-spin-jquery-js'></script>
-<script type='text/javascript' src='wp-content/plugins/booked/assets/js/tooltipster/js/jquery.tooltipster.min9b70.js?ver=3.3.0' id='booked-tooltipster-js'></script>
-<script type='text/javascript' id='booked-functions-js-extra'>
 
 </script>
 <script type='text/javascript' src='wp-content/plugins/booked/assets/js/functions25b6.js?ver=2.3.5' id='booked-functions-js'></script>
