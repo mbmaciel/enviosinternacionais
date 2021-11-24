@@ -37,7 +37,12 @@
 <script type='text/javascript' src='wp-includes/js/jquery/jquery-migrate.mind617.js?ver=3.3.2' id='jquery-migrate-js'></script>
 <script type='text/javascript' src='wp-includes/js/jquery/ui/core.min35d0.js?ver=1.12.1' id='jquery-ui-core-js'></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script type='text/javascript' src='wp-includes/js/cotacao.js'></script>
+<script src="https://www.eshopex.com/pe//assets/js/bootstrap.min.js"></script>
 	<style type="text/css">body .aheto-footer, body .aheto-footer p{color:#ffffff;}body .aheto-footer a{color:#ffffff;}</style><style type="text/css"></style>    <meta name="viewport" content="width=device-width, initial-scale=1">
   
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -289,7 +294,7 @@
 			
 <div class="aheto-heading aheto-heading--moovit__simple t-center align-mob-default aheto_heading_619403f80c76d ">
 
-	<h5 class="aheto-heading__title">Preencha os dados abaixo corretamente e aguarde a resposta do sistema.</h5>
+	<h5 class="aheto-heading__title animated-fast ">Preencha os dados abaixo corretamente e aguarde a resposta do sistema.</h5>
 </div>
 		</div>
 				</div>
@@ -345,6 +350,13 @@ $state = $_REQUEST['state'];
 $country = $_REQUEST['country'];
 $zip = $_REQUEST['zip'];
 
+$weight = $_REQUEST['weight'];
+$height = $_REQUEST['height'];
+$width = $_REQUEST['width'];
+$length = $_REQUEST['length'];
+
+
+
 
 $d_name = $_REQUEST['d_name'];
 $d_company = $_REQUEST['d_company'];
@@ -357,7 +369,8 @@ $d_country = $_REQUEST['d_country'];
 $d_zip = $_REQUEST['d_zip'];
 
 
-//die (var_dump($name, $street1, $city, $state, $country, $zip));
+
+var_dump($_REQUEST);
 
 #Shippo::setApiKey('shippo_live_83753381017589b6ef012e9814becaa25a77dddc');
 Shippo::setApiKey('shippo_test_93f9dd4b3cc19aa98ff447d87b6508b461378e88');
@@ -396,9 +409,9 @@ $parcel = array(
     'length'=> '5',
     'width'=> '5',
     'height'=> '5',
-    'distance_unit'=> 'in',
+    'distance_unit'=> 'cm',
     'weight'=> '2',
-    'mass_unit'=> 'lb',
+    'mass_unit'=> 'kg',
 );
 
 // Example shipment object
@@ -471,7 +484,7 @@ echo "<style>
 ?>
 
 
-  <form id="address-form" action="" autocomplete="off"method="POST">
+  <form id="address-form" class="animated-fast" action="" autocomplete="off"method="POST">
 	
 	<h5>Dados do Remetente</h5>
 
@@ -521,6 +534,135 @@ echo "<style>
     <label for="pais">País</label>
     <input type="text" class="form-control" id="country" name="country" required>
   </div>
+
+	<div class="row">
+                                        
+                                            <label>Enviar</label>
+                                            <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8"> 
+                                            <div class="shipment_types">
+                                                <div class="type-input-container radiobutton-holder" style="padding-top: 10px;">
+                                                    <div class="radio-inline">
+                                                        <label>
+                                                            <input value="1" name="ctl00$content$optradio" type="radio" id="ctl00_content_doc_btn" onclick="OcultForm" autocomplete="new-password"> Documento
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <label >
+                                                            <input value="2" name="ctl00$content$optradio" type="radio" id="ctl00_content_paq_btn" onclick="OcultForm1" autocomplete="new-password"> Pacote
+                                                        </label>
+                                                    </div>
+                                                    <br><br>
+                                                    <div class="col-md-12"></div>
+                                                    <!-- content for each tab -->
+                                                    <div class="tab-content" style="z-index: 3">
+                                                        <input id="parcel-weight-unit" name="parcel_weight_unit" type="hidden" value="kg" autocomplete="new-password">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+	<div class="col-lg-8 col-lg-offset-3 col-md-8 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+                                            <div class="col-md-12" style="padding-left:0px;padding-top: 10px;">
+                                                        
+                                                        <div class="panel panel-default" id="document" style="display: none;">
+                                                            <div class="panel-body">
+                                                                <div class="row"> 
+                                                                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-6 form-group">
+                                                                        <label style="font-size: 10px;color:grey">Peso</label>
+                                                                        <input name="ctl00$content$weight" maxlength="6" id="ctl00_content_weight" onkeypress="return valida(event)" class="form-control medium-view" type="text" value="0,5" style="width:80px" autocomplete="new-password">
+                                                                        
+
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-6 form-group">
+                                                                        <select name="ctl00$content$weight_unit" id="ctl00_content_weight_unit" class="form-control medium-view" style="width:80px;">
+	<option value="KG">KG</option>
+
+</select>                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="panel panel-default" id="paquet" style="display: block;">
+                                                            <div class="panel-body">
+                                                                <!--  Medidas paquetes--> 
+                                                                <div class="row">
+                                                                    
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                                        <div class="row">
+                                                                            <label class="paq-cell" style="font-size: 10px;padding-left:20px">
+                                                                                    <span>Largura</span>
+                                                                                </label>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                                <input name="width" type="text" maxlength="6" id="width" onkeypress="return valida(event)" class="form-control medium-view length js-integers" placeholder="cm" step="any" style="width:50px;" autocomplete="new-password">
+                                                                                
+                                                                            </div>
+                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                                <span style="padding-top: 15px;padding-left: 13px;font-size:14px" class="hidden-xs field-value">cm</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                                        <div class="row">
+                                                                             <label class="paq-cell" style="font-size: 10px;padding-left: 20px;">
+                                                                                    <span>Compr.</span>
+                                                                                </label>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                                <input name="length" type="text" maxlength="6" id="length" onkeypress="return valida(event)" class="form-control medium-view length js-integers" placeholder="cm" step="any" style="width:50px;">
+                                                                                
+                                                                            </div>
+                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                                <span style="" class="hidden-xs field-value">cm</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                                        <div class="row">
+                                                                            <label class="paq-cell" style="font-size: 10px;padding-left: 20px;">
+                                                                                    <span >Altura</span>
+                                                                                </label>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                                <input name="height" type="text" maxlength="6" id="height" onkeypress="return valida(event)" class="form-control medium-view length js-integers" placeholder="cm" step="any" style="width:50px;" >
+                                                                                
+                                                                            </div>
+                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                                <span style="" class="hidden-xs field-value">cm</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                                        <div class="row">
+                                                                            <label class="paq-cell" style="font-size: 10px;padding-left: 20px;">
+                                                                                    <span>Peso</span>
+                                                                                </label>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                                <input name="weight" type="text" maxlength="6" id="weight" onkeypress="return valida(event)" class="form-control medium-view length js-integers" placeholder="kg" step="any" style="width:50px;" >
+                                                                                
+                                                                            </div>
+                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                                <span  class="hidden-xs field-value">KG</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                             </div>
+                                        </div>
 
 
 <h5>Dados do Destinatário</h5>

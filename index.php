@@ -367,7 +367,7 @@ jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeTex
 			
 <div class="aheto-heading aheto-heading--moovit__simple t-center align-mob-default aheto_heading_619403e50a8ca ">
 
-	<h5 class="aheto-heading__subtitle">REALIZAÇÕES</h5><h2 class="aheto-heading__title">Ss números falam por <span class="moovit-dot dot-primary">si</span></h2>
+	<h5 class="aheto-heading__subtitle">REALIZAÇÕES</h5><h2 class="aheto-heading__title">Os números falam por <span class="moovit-dot dot-primary">si</span></h2>
 </div>
 		</div>
 				</div>
