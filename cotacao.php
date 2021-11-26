@@ -623,9 +623,7 @@
 																<br><br>
 																<div class="col-md-12"></div>
 																<!-- content for each tab -->
-																<div class="tab-content" style="z-index: 3">
-																	<input id="weight" name="weight" type="hidden" value="kg" autocomplete="new-password">
-																</div>
+																
 															</div>
 														</div>
 													</div>
@@ -640,7 +638,7 @@
 																<div class="row">
 																	<div class="col-lg-4 col-md-4 col-sm-3 col-xs-6 form-group">
 																		<label style="font-size: 10px;color:grey">Peso</label>
-																		<input name="weight" maxlength="6" id="weight" onkeypress="return valida(event)" class="form-control medium-view" type="text" style="width:80px" autocomplete="new-password">
+																		<input type="text"  name="weight" maxlength="6" id="weight" onkeypress="return valida(event)" class="form-control medium-view" style="width:80px" autocomplete="new-password">
 
 
 																	</div>
