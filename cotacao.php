@@ -144,7 +144,6 @@
 			}
 
 			address1Field.value = address1;
-			address2Field.value = address2;
 
 			postalField.value = postcode;
 			// After filling the form with address components from the Autocomplete
@@ -200,7 +199,6 @@
 				}
 			}
 
-			address1Field.value = address1;
 			address2Field.value = address2;
 			
 			postalField.value = postcode;
