@@ -67,11 +67,15 @@
 		let address1Field;
 		let address2Field;
 		let postalField;
+		let postal2Field;
 
 		function initAutocomplete() {
+			d_name = document.getElementById('d_name');
 			address1Field = document.querySelector("#street1");
 			address2Field = document.querySelector("#d_street1");
 			postalField = document.querySelector("#zip");
+			postal2Field = document.querySelector("#d_zip");
+
 			// Create the autocomplete object, restricting the search predictions to
 			// addresses in the US and Canada.
 			autocomplete = new google.maps.places.Autocomplete(address1Field, {
@@ -138,7 +142,7 @@
 						break;
 					}
 					case "country":
-						document.querySelector("#country").value = component.long_name;
+						document.querySelector("#country").value = component.short_name;
 						break;
 				}
 			}
@@ -149,7 +153,7 @@
 			// After filling the form with address components from the Autocomplete
 			// prediction, set cursor focus on the second address line to encourage
 			// entry of subpremise information such as apartment, unit, or floor number.
-			address2Field.focus();
+			d_name.focus();
 
 		}
 
@@ -168,7 +172,7 @@
 
 				switch (componentType) {
 					case "street_number": {
-						address2 = `${component.long_name} ${address1}`;
+						address2 = `${component.long_name} ${address2}`;
 						break;
 					}
 
@@ -178,12 +182,12 @@
 					}
 
 					case "postal_code": {
-						postcode = `${component.long_name}${postcode}`;
+						postcode2 = `${component.long_name}${postcode2}`;
 						break;
 					}
 
 					case "postal_code_suffix": {
-						postcode = `${postcode}-${component.long_name}`;
+						postcode2 = `${postcode2}-${component.long_name}`;
 						break;
 					}
 					case "locality":
@@ -194,14 +198,14 @@
 						break;
 					}
 					case "country":
-						document.querySelector("#d_country").value = component.long_name;
+						document.querySelector("#d_country").value = component.short_name;
 						break;
 				}
 			}
 
 			address2Field.value = address2;
 			
-			postalField.value = postcode;
+			postal2Field.value = postcode2;
 			// After filling the form with address components from the Autocomplete
 			// prediction, set cursor focus on the second address line to encourage
 			// entry of subpremise information such as apartment, unit, or floor number.
@@ -427,13 +431,12 @@
 												$country = $_REQUEST['country'];
 												$zip = $_REQUEST['zip'];
 
+												$optradio = $_REQUEST['optradio'];
+
 												$weight = $_REQUEST['weight'];
 												$height = $_REQUEST['height'];
 												$width = $_REQUEST['width'];
 												$length = $_REQUEST['length'];
-
-
-
 
 												$d_name = $_REQUEST['d_name'];
 												$d_company = $_REQUEST['d_company'];
@@ -444,8 +447,6 @@
 												$d_state = $_REQUEST['d_state'];
 												$d_country = $_REQUEST['d_country'];
 												$d_zip = $_REQUEST['d_zip'];
-
-
 
 												var_dump($_REQUEST);
 
@@ -476,6 +477,17 @@
 
 												// Parcel information array
 												// The complete reference for parcel object is here: https://goshippo.com/docs/reference#parcels
+
+												if ($optradio == '1') {
+													$parcel = array(
+														'length' => '2',
+														'width' => '2',
+														'height' => '2',
+														'distance_unit' => 'cm',
+														'weight' => $weight,
+														'mass_unit' => 'kg',
+													);
+												} else {
 												$parcel = array(
 													'length' => $length,
 													'width' => $width,
@@ -484,6 +496,7 @@
 													'weight' => $weight,
 													'mass_unit' => 'kg',
 												);
+											}
 
 												// Example shipment object
 												// For complete reference to the shipment object: https://goshippo.com/docs/reference#shipments
@@ -512,8 +525,8 @@
 												echo "<h3>Cotaçoes Disponíveis:" . "</h3>\n";
 												foreach ($rates as $rate) {
 													echo "<h5>" . $rate['provider'] . " - " . $rate['servicelevel']['name'] . "</h5>\n";
-													echo "<li>" . "Preço: "             . $rate['amount'] . "</li>";
-													echo "<li>" . "Prazo para entregar: "   . $rate['days'] . "</li>";
+													echo "<li>" . "Preço: $" . $rate['amount'] . "</li>";
+													//echo "<li>" . "Prazo para entregar: "   . $rate['days'] . "</li>";
 												}
 												echo "\n\n";
 
@@ -567,7 +580,7 @@
 
 												<div class="form-group">
 													<label class="form-control" for="Inputstreet1">Endereço</label>
-													<input type="text" class="form-control" id="street1" name="street1" aria-describedby="enderecoHelp" placeholder="Entre com o endereço" required>
+													<input type="text" class="form-control" id="street1" name="street1" aria-describedby="enderecoHelp" style="min-width: 300px;" placeholder="Entre com o endereço"  required>
 													<small id="enderecoHelp" class="form-text text-muted">Digite a rua e o número do endereço.</small>
 												</div>
 
@@ -599,12 +612,12 @@
 															<div class="type-input-container radiobutton-holder" style="padding-top: 10px;">
 																<div class="radio-inline">
 																	<label>
-																		<input value="1" name="ctl00$content$optradio" type="radio" id="ctl00_content_doc_btn" onclick="OcultForm" autocomplete="new-password"> Documento
+																		<input value="1" name="optradio" type="radio" id="optradio" onclick="OcultForm" autocomplete="new-password"> Documento
 																	</label>
 																</div>
 																<div class="radio-inline">
 																	<label>
-																		<input value="2" name="ctl00$content$optradio" type="radio" id="ctl00_content_paq_btn" onclick="OcultForm1" autocomplete="new-password"> Pacote
+																		<input value="2" name="optradio" type="radio" id="optradio2" onclick="OcultForm1" autocomplete="new-password"> Pacote
 																	</label>
 																</div>
 																<br><br>
@@ -731,7 +744,7 @@
 
 												<div class="form-group">
 													<label class="form-control" for="Inputstreet1">Endereço</label>
-													<input type="text" class="form-control" id="d_street1" name="d_street1" aria-describedby="enderecoHelp" placeholder="Entre com o endereço" required>
+													<input type="text" class="form-control" id="d_street1" name="d_street1" aria-describedby="enderecoHelp" style="min-width: 300px;" placeholder="Entre com o endereço" required>
 													<small id="enderecoHelp" class="form-text text-muted">Digite a rua e o número do endereço.</small>
 												</div>
 

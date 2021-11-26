@@ -50,8 +50,8 @@ function soloNumeros(e) {
 function OcultForm() {    
     $("#document").hide();
     $("#paquet").hide();
-    $("#ctl00_content_doc_btn").click(function () {
-        if ($("#ctl00_content_doc_btn").is(":checked")) {
+    $("#optradio").click(function () {
+        if ($("#optradio").is(":checked")) {
             $("#document").show();
             $("#paquet").hide();           
         } else {
@@ -59,7 +59,7 @@ function OcultForm() {
             $("#paquet").show();
         }
     });  
-    if ($("#ctl00_content_doc_btn").is(":checked")) {
+    if ($("#optradio").is(":checked")) {
         $("#document").show();
         $("#paquet").hide();
     } else {
@@ -89,8 +89,8 @@ function OcultForm1() {
     var peso = $.trim($("#peso").val());
     //$("#document").hide();
     $("#paquet").hide(); 
-    $("#ctl00_content_paq_btn").click(function () {
-        if ($("#ctl00_content_paq_btn").is(":checked")) {
+    $("#optradio2").click(function () {
+        if ($("#optradio2").is(":checked")) {
             $("#paquet").show();
             $("#document").hide();
         } else {
@@ -98,7 +98,7 @@ function OcultForm1() {
             $("#document").show();
         }
     });  
-    if ($("#ctl00_content_paq_btn").is(":checked")) {
+    if ($("#optradio2").is(":checked")) {
         $("#paquet").show();
         $("#document").hide();
     } else {
