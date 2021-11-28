@@ -18,7 +18,7 @@
 
 <link rel='stylesheet' id='elementor-post-8-css'  href='wp-content/uploads/elementor/css/post-82cd2.css?ver=1634833213' type='text/css' media='all' />
 <link rel='stylesheet' id='elementor-global-css'  href='wp-content/uploads/elementor/css/globala25e.css?ver=1634833214' type='text/css' media='all' />
-<link rel='stylesheet' id='elementor-post-415-css'  href='wp-content/uploads/elementor/css/post-415828f.css?ver=1637089794' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-415-css'  href='wp-content/uploads/elementor/css/post-sobre.css?ver=1637089794' type='text/css' media='all' />
 <link rel='stylesheet' id='elementor-post-394-css'  href='wp-content/uploads/elementor/css/post-3947dda.css?ver=1636731662' type='text/css' media='all' />
 <link rel='stylesheet' id='elementor-post-53-css'  href='wp-content/uploads/elementor/css/post-53971b.css?ver=1636730918' type='text/css' media='all' />
 <link rel='stylesheet' id='cc-google-font-raleway-css'  href='http://fonts.googleapis.com/css?family=Raleway%3A400&amp;subset=latin-ext&amp;ver=5.8.2' type='text/css' media='all' />
@@ -325,7 +325,21 @@
 				<div class="elementor-widget-container">
 					<div class="elementor-shortcode">
 
+				<p>	A Envios internacionais é uma empresa de logística full-service com
+soluções fáceis, flexíveis e simples. Oferecemos serviços de logística
+seguros e confiáveis há mais de 25 anos. Nossa equipe experiente se
+dedica a fornecer serviços que atendam ou superem suas expectativas.
+Podemos ajudá-lo a transportar seu produto da origem ao destino de
+maneira econômica e eficiente.</p>
 
+			<p>Nós entregamos para mais de 220 países, enviamos tudo que você
+precisa, enviamos por UPS, Fedex, DHL, Carga Aerea. Enviamos
+também para seus amigos e familiares, faça encomendas coletas em
+qualquer lugar do mundo pois fazemos seus embarques na hora e
+pegamos frete com seus amigos e familiares pois fazemos entregas
+expressas.</p>
+
+			
 
  <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
  <script
@@ -414,7 +428,7 @@
 <div class="aheto-heading aheto-heading--main t-left align-tablet-default align-mob-left aheto_heading_619403f812354 ">
 
 	
-	<p class="aheto-heading__title ">Rua Jóquei Clube 230 <br>
+	<p class="aheto-heading__title ">Rua Jóquei Clube 230 <br>post-415828f
 Prado Velho, Curitiba - PR - Brasil
 <br>
 <a href="mailto:contato@enviosinternacionais.com" style="font-size: 16px;color: #ffffff">contato@enviosinternacionais.com</a></p>

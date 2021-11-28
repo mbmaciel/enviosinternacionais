@@ -448,7 +448,7 @@
 												$d_country = $_REQUEST['d_country'];
 												$d_zip = $_REQUEST['d_zip'];
 
-												var_dump($_REQUEST);
+												die($_REQUEST);
 
 												#Shippo::setApiKey('shippo_live_83753381017589b6ef012e9814becaa25a77dddc');
 												Shippo::setApiKey('shippo_test_93f9dd4b3cc19aa98ff447d87b6508b461378e88');

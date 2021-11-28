@@ -70,17 +70,7 @@ function OcultForm() {
 $(document).ready(function () {
 
 
-    //$("#ModalError").modal("show");
-    //$("#loadingContentModal").modal("hide");
-    var general = document.getElementById("ctl00_content_errorGen").innerHTML;
-    if (general == "error") {
-        //$("#loadingContentModal").modal("hide");
-        $("#ModalError").modal("show");
-    }
-    else {
-        //$("#loadingContentModal").modal("show");
-        $("#ModalError").modal("hide");
-    }
+    
 });
 function OcultForm1() {
     var largo = $.trim($("#largo").val());
