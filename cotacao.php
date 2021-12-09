@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -31,10 +32,13 @@
 	<link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRaleway%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&amp;display=auto&amp;ver=5.8.2' type='text/css' media='all' />
 	<link rel='stylesheet' id='jetpack_css-css' href='wp-content/plugins/jetpack/css/jetpack8d49.css?ver=10.2.1' type='text/css' media='all' />
 
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type='text/javascript' src='wp-includes/js/cotacao.js'></script>
 	<script src="https://www.eshopex.com/pe//assets/js/bootstrap.min.js"></script>
 	<style type="text/css">
@@ -80,14 +84,14 @@
 			// addresses in the US and Canada.
 			autocomplete = new google.maps.places.Autocomplete(address1Field, {
 				componentRestrictions: {
-					country: ["us", "ca"]
+					country: ["us", "ca", "gb", "es"]
 				},
 				fields: ["address_components", "geometry"],
 				types: ["address"],
 			});
 			autocomplete2 = new google.maps.places.Autocomplete(address2Field, {
 				componentRestrictions: {
-					country: ["us", "ca"]
+					country: ["us", "ca", "gb", "es"]
 				},
 				fields: ["address_components", "geometry"],
 				types: ["address"],
@@ -311,6 +315,7 @@
 															<ul id="menu-menu" class="main-menu main-menu--inline">
 																<li id="menu-item-318" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-318"><a href="index.php">Inicio</a></li>
 																<li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="sobre.php">Sobre</a></li>
+																<li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="cadastro.php">Cadastre-se</a></li>
 															</ul>
 														</nav>
 														<div class="main-header__widget-box-mobile">
@@ -420,6 +425,8 @@
 											<?php
 											if (isset($_POST['enviar'])) {
 
+												
+
 												require_once(__DIR__ . '/vendor/autoload.php');
 
 												$name = $_REQUEST['name'];
@@ -448,7 +455,8 @@
 												$d_country = $_REQUEST['d_country'];
 												$d_zip = $_REQUEST['d_zip'];
 
-												die($_REQUEST);
+												
+
 
 												#Shippo::setApiKey('shippo_live_83753381017589b6ef012e9814becaa25a77dddc');
 												Shippo::setApiKey('shippo_test_93f9dd4b3cc19aa98ff447d87b6508b461378e88');
@@ -484,7 +492,7 @@
 														'width' => '2',
 														'height' => '2',
 														'distance_unit' => 'cm',
-														'weight' => $weight,
+														'weight' => '0.5',
 														'mass_unit' => 'kg',
 													);
 												} else {
@@ -574,12 +582,12 @@
 
 
 												<div class="form-group">
-													<label class="form-control" for="exampleInputNome1">Nome</label>
+													<label for="exampleInputNome1">Nome</label>
 													<input type="text" class="form-control" id="name" name="name" required>
 												</div>
 
 												<div class="form-group">
-													<label class="form-control" for="Inputstreet1">Endereço</label>
+													<label for="Inputstreet1">Endereço</label>
 													<input type="text" class="form-control" id="street1" name="street1" aria-describedby="enderecoHelp" style="min-width: 300px;" placeholder="Entre com o endereço"  required>
 													<small id="enderecoHelp" class="form-text text-muted">Digite a rua e o número do endereço.</small>
 												</div>
@@ -612,12 +620,12 @@
 															<div class="type-input-container radiobutton-holder" style="padding-top: 10px;">
 																<div class="radio-inline">
 																	<label>
-																		<input value="1" name="optradio" type="radio" id="optradio" onclick="OcultForm" autocomplete="new-password"> Documento
+																		<input value="1" name="optradio" type="radio" id="optradio" onclick="OcultForm" autocomplete="new-password" required> Documento
 																	</label>
 																</div>
 																<div class="radio-inline">
 																	<label>
-																		<input value="2" name="optradio" type="radio" id="optradio2" onclick="OcultForm1" autocomplete="new-password"> Pacote
+																		<input value="2" name="optradio" type="radio" id="optradio2" onclick="OcultForm1" autocomplete="new-password" required> Pacote
 																	</label>
 																</div>
 																<br><br>
@@ -638,7 +646,7 @@
 																<div class="row">
 																	<div class="col-lg-4 col-md-4 col-sm-3 col-xs-6 form-group">
 																		<label style="font-size: 10px;color:grey">Peso</label>
-																		<input type="text"  name="weight" maxlength="6" id="weight" onkeypress="return valida(event)" class="form-control medium-view" style="width:80px" autocomplete="new-password">
+																		<input type="text" name="weight" maxlength="6" id="weight" onkeypress="return valida(event)" class="form-control medium-view" style="width:80px" autocomplete="new-password">
 
 
 																	</div>
@@ -687,7 +695,7 @@
 
 																			</div>
 																			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-																				<span style="" class="hidden-xs field-value">cm</span>
+																				<span class="hidden-xs field-value">cm</span>
 																			</div>
 																		</div>
 																	</div>
@@ -704,7 +712,7 @@
 
 																			</div>
 																			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-																				<span style="" class="hidden-xs field-value">cm</span>
+																				<span class="hidden-xs field-value">cm</span>
 																			</div>
 																		</div>
 																	</div>
@@ -731,17 +739,15 @@
 													</div>
 												</div>
 
-
 												<h5>Dados do Destinatário</h5>
 
-
 												<div class="form-group">
-													<label class="form-control" for="exampleInputNome1">Nome</label>
+													<label for="exampleInputNome1">Nome</label>
 													<input type="text" class="form-control" id="d_name" name="d_name" required>
 												</div>
 
 												<div class="form-group">
-													<label class="form-control" for="Inputstreet1">Endereço</label>
+													<label for="Inputstreet1">Endereço</label>
 													<input type="text" class="form-control" id="d_street1" name="d_street1" aria-describedby="enderecoHelp" style="min-width: 300px;" placeholder="Entre com o endereço" required>
 													<small id="enderecoHelp" class="form-text text-muted">Digite a rua e o número do endereço.</small>
 												</div>
@@ -766,14 +772,11 @@
 													<input type="text" class="form-control" id="d_country" name="d_country" required>
 												</div>
 
-
-
 												<input type="submit" class="btn btn-primary btn-user btn-block" value="Enviar" name="enviar">
 											</form>
 
 											<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
 											<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfYbF07_JGPB9vyFrd3E4-7uul8RN8-XQ&callback=initAutocomplete&libraries=places&v=weekly" async></script>
-
 
 										</div>
 									</div>
@@ -945,18 +948,7 @@
 
 	<script type='text/javascript' src='wp-content/plugins/contact-form-7/includes/js/indexd03b.js?ver=5.5.1' id='contact-form-7-js'></script>
 	<script type='text/javascript' src='wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.minb106.js?ver=2.7.0-wc.5.8.0' id='jquery-blockui-js'></script>
-	<script type='text/javascript' id='wc-add-to-cart-js-extra'>
-		/* <![CDATA[ */
-		var wc_add_to_cart_params = {
-			"ajax_url": "\/wp-admin\/admin-ajax.php",
-			"wc_ajax_url": "\/?wc-ajax=%%endpoint%%",
-			"i18n_view_cart": "Ver carrinho",
-			"cart_url": "http:\/\/enviosinternacionais.com\/cart\/",
-			"is_cart": "",
-			"cart_redirect_after_add": "no"
-		};
-		/* ]]> */
-	</script>
+
 	<script type='text/javascript' src='wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min3e35.js?ver=5.8.0' id='wc-add-to-cart-js'></script>
 	<script type='text/javascript' src='wp-content/plugins/wp-datepicker/js/wpdp_auto_script2098.js?ver=202111160718' id='datepicker-script-auto-js'></script>
 
