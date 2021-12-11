@@ -77,17 +77,8 @@ class LoginController extends Controller
                 $this->incrementLoginAttempts($request);
             }
 
-            // Adicionado recurso de resposta Unauthorized 401. mbmaciel
-
-            if ($request->expectsJson()) {
-                return response()->json(['error' => 'Unauthenticated.'], 401);
-            }
-        
-            // return a plain 401 response even when not a json call
-            return response('Unauthenticated.', 401);
-
-            /*return redirect()->to('login' . $to)
-                ->withErrors(trans('auth.failed')); */
+            return redirect()->to('login' . $to)
+                ->withErrors(trans('auth.failed'));
         }
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
