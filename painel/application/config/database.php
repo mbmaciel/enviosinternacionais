@@ -75,12 +75,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '127.0.0.1',
+	'hostname' => 'localhost',
 	// 'username' => 'codeglam_codecan',
 	// 'password' => 'Pakistan@123+-',
 	// 'database' => 'codeglam_demotest',
-	'username' => 'root',
-	'password' => '',
+	'username' => 'envios',
+	'password' => 'tvpepe46',
 	'database' => 'enviosinternacionais',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
