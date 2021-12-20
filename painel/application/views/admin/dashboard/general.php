@@ -23,7 +23,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 text-center">
-          <h4>Welcome to <?= $this->general_settings['application_name'] ?>!</h4>
+          <h4>Bem vindo ao Painel de Controle !</h4>
         </div>
       </div>
     </div><!-- /.container-fluid -->

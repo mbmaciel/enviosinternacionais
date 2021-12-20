@@ -17,7 +17,7 @@
 			}
 			else{
 				$this->db->where('is_user', 1);
-				$this->db->where('added_by',($this->session->userdata('user_id')));
+				//$this->db->where('added_by',($this->session->userdata('user_id')));
 				return $this->db->get('ci_users')->result_array();
 			}
 		}

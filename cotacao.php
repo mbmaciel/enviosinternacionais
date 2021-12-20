@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -429,6 +431,11 @@
 
 												require_once(__DIR__ . '/vendor/autoload.php');
 
+												$weight = 0;
+												$height = 0;
+												$width = 0;
+												$length = 0;
+
 												$name = $_REQUEST['name'];
 												$company = $_REQUEST['company'];
 												$street1 = $_REQUEST['street1'];
@@ -440,10 +447,13 @@
 
 												$optradio = $_REQUEST['optradio'];
 
+												/*
+
 												$weight = $_REQUEST['weight'];
 												$height = $_REQUEST['height'];
 												$width = $_REQUEST['width'];
 												$length = $_REQUEST['length'];
+												*/
 
 												$d_name = $_REQUEST['d_name'];
 												$d_company = $_REQUEST['d_company'];
@@ -455,8 +465,18 @@
 												$d_country = $_REQUEST['d_country'];
 												$d_zip = $_REQUEST['d_zip'];
 
-												
+												$mysqli = new mysqli("localhost","envios","tvpepe46","enviosinternacionais");
+												$sql = "INSERT INTO `ci_cotacao` (`id`, `name`, `company`, `street1`, `email`, `city`, `state`, `country`, `zip`, `weight`, `height`, `width`, `length`, `d_name`, `d_company`, `d_street`, `d_phone`, `d_email`, `d_city`, `d_state`, `d_country`, `d_zip`) VALUES (NULL, '$name', '$company', '$street1', '$email', '$city', '$state', '$country', '$zip', $weight, $height, $width, $length, '$d_name', '$d_company', '$d_street1', '$d_phone', '$d_email', '$d_city', '$d_state', '$d_country', '$d_zip'  )";
+												$result = $mysqli -> query($sql);
+												$mysqli -> close();
 
+												echo $sql ;
+
+
+												echo "Cadastro efetuado com sucesso!";
+
+												
+												/*
 
 												#Shippo::setApiKey('shippo_live_83753381017589b6ef012e9814becaa25a77dddc');
 												Shippo::setApiKey('shippo_test_93f9dd4b3cc19aa98ff447d87b6508b461378e88');
@@ -566,12 +586,33 @@
 												}
 												// For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our
 												// complete documentation: https://goshippo.com/docs/
+
+												*/
 												echo "<style>
 												#address-form {
 													display: none;
 												}
 												</style>";
 											}
+
+											?>
+
+
+											<?php
+
+											// Checa a sessão
+											if (isset($_SESSION['cadastro'])) {
+												// Se estiver cadastrado, mostra o formulário
+												$form = true;
+												
+											} else {
+												// Se não estiver logado, mostra o formulário de login
+												echo "Antes de usar o serviço, você precisa estar cadastrado. <br>";
+												$form = false;
+											}
+
+											if ($form)
+												{
 
 											?>
 
@@ -774,6 +815,11 @@
 
 												<input type="submit" class="btn btn-primary btn-user btn-block" value="Enviar" name="enviar">
 											</form>
+
+											<?php 
+												}
+
+												?>
 
 											<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
 											<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfYbF07_JGPB9vyFrd3E4-7uul8RN8-XQ&callback=initAutocomplete&libraries=places&v=weekly" async></script>

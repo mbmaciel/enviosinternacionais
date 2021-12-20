@@ -1,7 +1,7 @@
 <div class="form-background">
   <div class="login-box">
     <div class="login-logo">
-      <h2><a href="<?= base_url('admin'); ?>"><?= $this->general_settings['application_name']; ?></a></h2>
+      <h2><a href="<?= base_url('admin'); ?>">Envios Internacionais</a></h2>
     </div>
     <!-- /.login-logo -->
     <div class="card">
@@ -32,13 +32,14 @@
             <!-- /.col -->
           </div>
         <?php echo form_close(); ?>
-
+      <!-- 
         <p class="mb-1">
           <a href="<?= base_url('admin/auth/forgot_password'); ?>"><?= trans('i_forgot_my_password') ?></a>
         </p>
         <p class="mb-0">
           <a href="<?= base_url('admin/auth/register'); ?>" class="text-center"><?= trans('register_new_membership') ?></a>
         </p>
+        -->
       </div>
       <!-- /.login-card-body -->
     </div>

@@ -9,7 +9,7 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
   <a href="<?= base_url('admin'); ?>" class="brand-link">
     <img src="<?= base_url($this->general_settings['favicon']); ?>" alt="Logo" class="brand-image img-circle elevation-3"
          style="opacity: .8">
-    <span class="brand-text font-weight-light"><?= $this->general_settings['application_name']; ?></span>
+    <span class="brand-text font-weight-light">Envios Internacionais</span>
   </a>
 
   <!-- Sidebar -->

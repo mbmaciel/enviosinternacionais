@@ -20,18 +20,18 @@ $lang['profile']                               = "Profile";
 $lang['role_and_permissions']                               = "Role & Permissions";
 	$lang['module_setting']                              = "Module Setting";
 
-$lang['users']                               = "Users";
-	$lang['users_list']                      = "Users List";
-	$lang['add_new_user']                    = "Add New User";
-	$lang['created_by']                      = "Created By"; 
-	$lang['select_user_role']                = "Select User Role";
+$lang['users']                               = "Usuários";
+	$lang['users_list']                     = "Lista de Usuários";
+	$lang['add_new_user']                   = "Adicionar Novo Usuário";
+	$lang['created_by']                     = "Criado por";
+	$lang['select_user_role']               = "Selecione o papel do usuário";
 
 
 
 
-$lang['activity_log']                               = "Activity Log";
-$lang['settings']                               = "Settings";
-	$lang['general_settings']                               = "General Settings";
+$lang['activity_log']                               = "Cadastrados";
+$lang['settings']                               = "Configurações";
+	$lang['general_settings']                              = "Configurações Gerais";
 	$lang['email_template_settings']                               = "Email Template Settings";
 $lang['codeigniter_examples']                               = "Codeingiter Examples";
 	$lang['simple_datatable']                               = "Simple Datatable";
@@ -48,7 +48,7 @@ $lang['database_joins_example']                               = "Database Joins 
 	$lang['serverside_join']                               = "Serverside Join";
 	$lang['simple_join']                               = "Simple Join";
 $lang['language_setting']                               = "Language Setting";
-$lang['locations']                               = "Locations";
+$lang['cadastrados']                               = "Cadastrados";
 	$lang['country']                               = "Country";
 	$lang['state']                               = "State";
 	$lang['city']                               = "City";
@@ -89,42 +89,42 @@ $lang['warning']                               = "Warning";
 $lang['informational']                               = "Informational";
 
 //  Login
-$lang['signin_to_start_your_session']                               = "Signin to start your session";
+$lang['signin_to_start_your_session']                               = "Conecte para entrar na Administração";
 $lang['signin']                               = "Sign In";
 $lang['username']                               = "Username";
 $lang['password']                               = "Password";
-$lang['remember_me']                               = "Remember Me";
-$lang['i_forgot_my_password']                               = "I forgot my password";
-$lang['register_new_membership']                               = "Register a new membership";
+$lang['remember_me']                               = "Lembrar-me";
+$lang['i_forgot_my_password']                               = "Esqueci-me da minha palavra-passe";
+$lang['register_new_membership']                               = "Registar nova conta";
 
 //  Register
-$lang['firstname']                               = "First Name";
-$lang['lastname']                               = "Last Name";
-$lang['email']                               = "Email Address";
-$lang['confirm']                               = "Confirm";
-$lang['i_agree_to_the']                               = "I agree to the";
-$lang['terms']                               = "Terms";
-$lang['register']                               = "Register";
-$lang['i_already_have_membership']                               = "I already have a membership";
+$lang['firstname']                               = "Nome";
+$lang['lastname']                               = "Sobrenome";
+$lang['email']                               = "Email";
+$lang['confirm']                               = "Confirmar";
+$lang['i_agree_to_the']                               = "Eu concordo com os";
+$lang['terms']                               = "Termos";
+$lang['register']                               = "Registar";
+$lang['i_already_have_membership']                              = "Já tenho uma conta";
 
 // Forgot Password
-$lang['forgot_password']                    = "Forget Password";
-$lang['submit']                    = "Submit";
-$lang['you_remember_password']                    = "You remember Password? Sign In";
+$lang['forgot_password']                    = "Esqueci-me da palavra-passe";
+$lang['submit']                    = "Submeter";
+$lang['you_remember_password']                   = "Você lembra da sua palavra-passe";
 
 // Reset Password
-$lang['reset_password']                    = "Reset Password";
-$lang['reset']                    = "Reset";
+$lang['reset_password']                    = "Redefinir palavra-passe";
+$lang['reset']                    = "Redefinir";
 
 //  Dashboard
 $lang['home']                   = "Home";
-$lang['user_registrations']                   = "User Registerations";
-$lang['active_users']                   = "Active Users";
-$lang['inactive_users']                   = "Inactive Users";
-$lang['unique_visitors']                   = "Unique Visitors";
-$lang['more_info']                   = "More Info";
-$lang['sales']                   = "Sales";
-$lang['visitors']                   = "Visitors";
+$lang['user_registrations']                   = "Registos de utilizador";
+$lang['active_users']                   = "Utilizadores ativos";
+$lang['inactive_users']                  = "Utilizadores inativos";
+$lang['unique_visitors']                   = "Visitantes únicos";
+$lang['more_info']                   = "Mais informações";
+$lang['sales']                  = "Vendas";
+$lang['visitors']                  = "Visitantes";
 $lang['area']                   = "Area";
 $lang['donut']                   = "Donut";
 $lang['online']                   = "Online";

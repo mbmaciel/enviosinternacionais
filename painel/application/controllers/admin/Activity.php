@@ -13,7 +13,7 @@ class Activity extends MY_Controller {
 	public function index()
 	{
 		
-		$data['title'] = 'User Activity Log';
+		$data['title'] = 'Usuários Cadastrados';
 		$this->load->view('admin/includes/_header');
 		$this->load->view('admin/activity/activity-list', $data);
 		$this->load->view('admin/includes/_footer');

@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -263,6 +265,25 @@
 											<?php
 											if (isset($_POST['enviar'])) {
 
+
+												$nome = $_REQUEST['nome'];
+												$sobrenome = $_REQUEST['sobrenome'];
+												$email = $_REQUEST['email'];
+												$tel = $_REQUEST['tel'];
+												$endereco = $_REQUEST['endereco'];
+												$username = strtolower($nome);
+												$now = date("Y-m-d H:i:s");
+
+												$mysqli = new mysqli("localhost","envios","tvpepe46","enviosinternacionais");
+												$sql = "INSERT INTO `ci_users` (`id`, `user_id`, `added_by`, `username`, `firstname`, `lastname`, `email`, `mobile_no`, `password`, `address`, `role`, `is_active`, `is_verify`, `is_admin`, `is_user`, `token`, `password_reset_code`, `last_ip`, `created_at`, `updated_at`, `admin_role_id`) VALUES (NULL, '0', '', '$username', '$nome', '$sobrenome', '$email', '$tel', '', '$endereco', '1', '1', '0', '0', '1', NULL, NULL, NULL, '$now', '$now', '0')";
+												$result = $mysqli -> query($sql);
+												$mysqli -> close();
+
+												echo "Cadastro efetuado com sucesso!";
+
+												$_SESSION["cadastro"] = "OK";
+
+
                       }
 
 											?>
@@ -274,8 +295,13 @@
 
 
 												<div class="form-group">
-													<label for="nome">Nome Completo</label>
-													<input type="text" class="form-control" id="name" name="name" required>
+													<label for="nome">Nome </label>
+													<input type="text" class="form-control" id="nome" name="nome" required>
+												</div>
+
+												<div class="form-group">
+													<label for="nome">Sobrenome </label>
+													<input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
 												</div>
 
                         <div class="form-group">
@@ -290,13 +316,8 @@
 												</div>
 
 												<div class="form-group">
-													<label for="cidade">Cidade</label>
-													<input type="text" class="form-control" id="cidade" name="cidade" required>
-												</div>
-
-												<div class="form-group">
-													<label for="estado">Estado</label>
-													<input type="text" class="form-control" id="estado" name="estado" required>
+													<label for="cidade">Endereço</label>
+													<input type="text" class="form-control" id="endereco" name="endereco" required>
 												</div>
 
                         <div class="form-group">
