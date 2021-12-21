@@ -471,8 +471,7 @@ session_start();
 												$result = $mysqli -> query($sql);
 												$mysqli -> close();
 
-												echo $sql ;
-
+												//echo $sql ;
 
 												echo "Cadastro efetuado com sucesso!";
 
