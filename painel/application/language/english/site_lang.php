@@ -41,6 +41,7 @@ $lang['codeigniter_examples']                               = "Codeingiter Examp
 	$lang['file_upload']                               = "File Upload";
 	$lang['multiple_files_upload']                               = "Multiple Files Upload";
 $lang['backup_and_export']                               = "Backup & Export";
+$lang['cotacao']                               = "Cotação";
 $lang['invoicing_system']                               = "Invoicing System";
 	$lang['invoice_list']                               = "Invoice List";
 	$lang['add_new_invoice']                               = "Add New Invoice";
