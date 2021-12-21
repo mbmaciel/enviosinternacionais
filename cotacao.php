@@ -83,17 +83,17 @@ session_start();
 			postal2Field = document.querySelector("#d_zip");
 
 			// Create the autocomplete object, restricting the search predictions to
-			// addresses in the US and Canada.
+			// addresses in the world
 			autocomplete = new google.maps.places.Autocomplete(address1Field, {
 				componentRestrictions: {
-					country: ["us", "ca", "gb", "es"]
+					country: ['br', 'us', 'ca']
 				},
 				fields: ["address_components", "geometry"],
 				types: ["address"],
 			});
 			autocomplete2 = new google.maps.places.Autocomplete(address2Field, {
 				componentRestrictions: {
-					country: ["us", "ca", "gb", "es"]
+					country: ['br', 'us', 'ca']
 				},
 				fields: ["address_components", "geometry"],
 				types: ["address"],

@@ -24,9 +24,9 @@
               <th>#<?= trans('id') ?></th>
               <th><?= trans('username') ?></th>
               <th><?= trans('email') ?></th>
-              <th><?= trans('mobile_no') ?></th>
+              <th>Tel. Celular</th>
               <th><?= trans('created_by') ?></th>
-              <th><?= trans('created_date') ?></th>
+              <th>Data Cadastro</th>
               <th><?= trans('status') ?></th>
             </tr>
           </thead>
