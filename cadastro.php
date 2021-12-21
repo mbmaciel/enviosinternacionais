@@ -274,12 +274,15 @@ session_start();
 												$username = strtolower($nome);
 												$now = date("Y-m-d H:i:s");
 
+												//$mysqli = new mysqli("127.0.0.1","root","","enviosinternacionais");
 												$mysqli = new mysqli("localhost","envios","tvpepe46","enviosinternacionais");
 												$sql = "INSERT INTO `ci_users` (`id`, `user_id`, `added_by`, `username`, `firstname`, `lastname`, `email`, `mobile_no`, `password`, `address`, `role`, `is_active`, `is_verify`, `is_admin`, `is_user`, `token`, `password_reset_code`, `last_ip`, `created_at`, `updated_at`, `admin_role_id`) VALUES (NULL, '0', '', '$username', '$nome', '$sobrenome', '$email', '$tel', '', '$endereco', '1', '1', '0', '0', '1', NULL, NULL, NULL, '$now', '$now', '0')";
 												$result = $mysqli -> query($sql);
 												$mysqli -> close();
 
 												echo "Cadastro efetuado com sucesso!";
+
+												print_r ($sql);
 
 												$_SESSION["cadastro"] = "OK";
 
