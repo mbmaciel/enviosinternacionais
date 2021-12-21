@@ -72,13 +72,15 @@ $cur_tab = $this->uri->segment(2)==''?'dashboard': $this->uri->segment(2);
           <?php endif; ?>
           <!-- /sub-menu -->
         </li>
-        <li class="nav-item"> <a href="/admin/cotacao/" class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
-                <p>Cotação</p>
-              </a></li>
+        
 
         <?php endif; ?>
 
         <?php endforeach; ?>
+
+        <li class="nav-item"> <a href="/painel/admin/cotacao/" class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
+                <p>Cotação</p>
+              </a></li>
         
       </ul>
     </nav>
