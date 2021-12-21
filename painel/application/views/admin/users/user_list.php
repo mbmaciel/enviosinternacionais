@@ -12,9 +12,7 @@
           <h3 class="card-title"><i class="fa fa-list"></i>&nbsp; <?= trans('users_list') ?></h3>
         </div>
         <div class="d-inline-block float-right">
-          <?php if($this->rbac->check_operation_permission('add')): ?>
-            <a href="<?= base_url('admin/users/add'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> <?= trans('add_new_user') ?></a>
-          <?php endif; ?>
+          
         </div>
       </div>
     </div>
@@ -30,7 +28,6 @@
               <th><?= trans('created_by') ?></th>
               <th><?= trans('created_date') ?></th>
               <th><?= trans('status') ?></th>
-              <th width="100" class="text-right"><?= trans('action') ?></th>
             </tr>
           </thead>
         </table>
@@ -59,7 +56,6 @@
     { "targets": 4, "name": "admin_id", 'searchable':true, 'orderable':true},
     { "targets": 5, "name": "created_at", 'searchable':false, 'orderable':false},
     { "targets": 6, "name": "is_active", 'searchable':true, 'orderable':true},
-    { "targets": 7, "name": "Action", 'searchable':false, 'orderable':false,'width':'100px'}
     ]
   });
 </script>
