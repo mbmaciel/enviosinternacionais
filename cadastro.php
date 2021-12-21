@@ -282,7 +282,7 @@ session_start();
 
 												echo "Cadastro efetuado com sucesso!";
 
-												print_r ($sql);
+												//print_r ($sql);
 
 												$_SESSION["cadastro"] = "OK";
 
