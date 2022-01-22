@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+include_once "painel/system/core/common.php";
+include_once "painel/system/core/compat/password.php";
+require_once(__DIR__ . '/config.php');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -155,6 +161,7 @@ session_start();
 																<li id="menu-item-318" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-318"><a href="index.php">Inicio</a></li>
 																<li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="sobre.php">Sobre</a></li>
                                 <li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="cadastro.php">Cadastre-se</a></li>
+																<li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="login.php">Login</a></li>
 															</ul>
 														</nav>
 														<div class="main-header__widget-box-mobile">
@@ -263,6 +270,18 @@ session_start();
 											<!-- Formulário de Cotação -->
 
 											<?php
+
+											function generateRandomString($length = 10) {
+												$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+												$charactersLength = strlen($characters);
+												$randomString = '';
+												for ($i = 0; $i < $length; $i++) {
+														$randomString .= $characters[rand(0, $charactersLength - 1)];
+												}
+												return $randomString;
+											}
+											$senha = generateRandomString (5);
+
 											if (isset($_POST['enviar'])) {
 
 
@@ -273,18 +292,26 @@ session_start();
 												$endereco = $_REQUEST['endereco'];
 												$username = strtolower($nome);
 												$now = date("Y-m-d H:i:s");
+												$password = password_hash($senha, PASSWORD_BCRYPT);
 
-												//$mysqli = new mysqli("127.0.0.1","root","","enviosinternacionais");
-												$mysqli = new mysqli("localhost","envios","tvpepe46","enviosinternacionais");
-												$sql = "INSERT INTO `ci_users` (`id`, `user_id`, `added_by`, `username`, `firstname`, `lastname`, `email`, `mobile_no`, `password`, `address`, `role`, `is_active`, `is_verify`, `is_admin`, `is_user`, `token`, `password_reset_code`, `last_ip`, `created_at`, `updated_at`, `admin_role_id`) VALUES (NULL, '0', '', '$username', '$nome', '$sobrenome', '$email', '$tel', '', '$endereco', '1', '1', '0', '0', '1', NULL, NULL, NULL, '$now', '$now', '0')";
+												$mysqli = new mysqli(DB_HOST,DB_USER, DB_PASS, DB_NAME);
+												$mysqli->set_charset("utf8");
+
+												$sql = "INSERT INTO `ci_users` (`id`, `user_id`, `added_by`, `username`, `firstname`, `lastname`, `email`, `mobile_no`, `password`, `address`, `role`, `is_active`, `is_verify`, `is_admin`, `is_user`, `token`, `password_reset_code`, `last_ip`, `created_at`, `updated_at`, `admin_role_id`) VALUES (NULL, '0', '', '$username', '$nome', '$sobrenome', '$email', '$tel', '$password', '$endereco', '1', '1', '0', '0', '1', NULL, NULL, NULL, '$now', '$now', '0')";
 												$result = $mysqli -> query($sql);
 												$mysqli -> close();
 
-												echo "Cadastro efetuado com sucesso!";
+												echo "<h5>Cadastro efetuado com sucesso!<br> Seu login é: $username<br> Sua senha é: $senha <br> <a href='cotacao.php'>Clique aqui para fazer a cotação</a></h5>";
 
 												//print_r ($sql);
 
 												$_SESSION["cadastro"] = "OK";
+												$_SESSION["nome"] = $nome;
+												$_SESSION["sobrenome"] = $sobrenome;
+												$_SESSION["email"] = $email;
+												$_SESSION["username"] = $username;
+												$_SESSION["firstname"] = $nome;
+
 
 
                       }

@@ -22,16 +22,14 @@
           <thead>
             <tr>
               <th>#<?= trans('id') ?></th>
-              <th>Nome Origem</th>
-              <th>Email</th>
+              <th>USUÁRIO </th>
               <th>Endereço</th>
               <th>Cidade / EStado / Pais</th>
               <th>CEP</th>
-              <th>Nome Destino</th>
               <th>Endereço Destino</th>
-              <th>Email</th>
               <th>Cidade / Estado / Pais</th>
               <th>CEP</th>
+              <th>COTAR</th>
             </tr>
           </thead>
         </table>

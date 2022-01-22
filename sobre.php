@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -337,7 +340,12 @@
 															<ul id="menu-menu" class="main-menu main-menu--inline">
 																<li id="menu-item-318" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-318"><a href="index.php">Inicio</a></li>
 																<li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="sobre.php">Sobre</a></li>
-																<li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="cadastro.php">Cadastre-se</a></li>
+																<?php 
+															  if (!isset($_SESSION['cadastro'])) {
+															    echo '<li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="cadastro.php">Cadastre-se</a></li>';
+																}
+																?>
+																<li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="login.php">Login</a></li>
 															</ul>
 														</nav>
 														<div class="main-header__widget-box-mobile">

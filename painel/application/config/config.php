@@ -30,8 +30,8 @@ $url = (isset($_SERVER['HTTPS']) ? "https://" : "http://");
 
 $url .= $_SERVER['HTTP_HOST']. str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 
-//$config['base_url'] = 'http://localhost:8080/painel';
-$config['base_url'] = 'https://enviosinternacionais.com/painel';
+$config['base_url'] = "http://" . $_SERVER['HTTP_HOST'] ."/painel";
+//$config['base_url'] = 'https://enviosinternacionais.com/painel';
 
 /*
 |--------------------------------------------------------------------------

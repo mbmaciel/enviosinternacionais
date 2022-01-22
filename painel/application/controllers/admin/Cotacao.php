@@ -18,6 +18,14 @@ class Cotacao extends MY_Controller {
 		$this->load->view('admin/cotacao/cotacao_list');
 		$this->load->view('admin/includes/_footer');
 	}
+
+	public function edit($id) {
+		$data['cotacao'] = $this->cotacao_model->get_cotacao_by_id($id);
+
+		$this->load->view('admin/includes/_header');
+		$this->load->view('admin/cotacao/edit_cotacao', $data);
+		$this->load->view('admin/includes/_footer');
+	}
 	
 	public function datatable_json(){				   					   
 		$records['data'] = $this->cotacao_model->get_all_cotacao();
@@ -29,15 +37,13 @@ class Cotacao extends MY_Controller {
 			$data[]= array(
 				++$i,
 				$row['name'],
-				$row['email'],
 				$row['street1'],
 				$row['city'] . ', ' . $row['state'] . ',' . $row['country'],
 				$row['zip'],
-				$row['d_name'],	
 				$row['d_street'],
-				$row['d_email'],
 				$row['d_city'] . ', ' . $row['d_state'] . ',' . $row['d_country'],
 				$row['d_zip'],
+				'<a href="'.base_url('admin/cotacao/edit/'.$row['id']).'" class="btn btn-primary btn-sm" title="Cotar"><i class="fa fa-money"></i></a>'
 				
 			);
 		}

@@ -317,7 +317,12 @@ session_start();
 															<ul id="menu-menu" class="main-menu main-menu--inline">
 																<li id="menu-item-318" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-318"><a href="index.php">Inicio</a></li>
 																<li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="sobre.php">Sobre</a></li>
-																<li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="cadastro.php">Cadastre-se</a></li>
+																<?php 
+															  if (!isset($_SESSION['cadastro'])) {
+															    echo '<li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="cadastro.php">Cadastre-se</a></li>';
+																}
+																?>
+																<li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="login.php">Login</a></li>
 															</ul>
 														</nav>
 														<div class="main-header__widget-box-mobile">
@@ -430,13 +435,15 @@ session_start();
 												
 
 												require_once(__DIR__ . '/vendor/autoload.php');
+												require_once(__DIR__ . '/config.php');
 
 												$weight = 0;
 												$height = 0;
 												$width = 0;
 												$length = 0;
 
-												$name = $_REQUEST['name'];
+												
+												$name = $_SESSION["username"] ?? "";
 												$company = $_REQUEST['company'];
 												$street1 = $_REQUEST['street1'];
 												$email = $_REQUEST['email'];
@@ -445,9 +452,8 @@ session_start();
 												$country = $_REQUEST['country'];
 												$zip = $_REQUEST['zip'];
 
-												$optradio = $_REQUEST['optradio'];
-
 												/*
+												$optradio = $_REQUEST['optradio'];
 
 												$weight = $_REQUEST['weight'];
 												$height = $_REQUEST['height'];
@@ -455,7 +461,7 @@ session_start();
 												$length = $_REQUEST['length'];
 												*/
 
-												$d_name = $_REQUEST['d_name'];
+												//$d_name = $_REQUEST['d_name'];
 												$d_company = $_REQUEST['d_company'];
 												$d_street1 = $_REQUEST['d_street1'];
 												$d_phone = $_REQUEST['d_phone'];
@@ -465,129 +471,16 @@ session_start();
 												$d_country = $_REQUEST['d_country'];
 												$d_zip = $_REQUEST['d_zip'];
 
-												//$mysqli = new mysqli("127.0.0.1","root","","enviosinternacionais");
-												$mysqli = new mysqli("localhost","envios","tvpepe46","enviosinternacionais");
-												$sql = "INSERT INTO `ci_cotacao` (`id`, `name`, `company`, `street1`, `email`, `city`, `state`, `country`, `zip`, `weight`, `height`, `width`, `length`, `d_name`, `d_company`, `d_street`, `d_phone`, `d_email`, `d_city`, `d_state`, `d_country`, `d_zip`) VALUES (NULL, '$name', '$company', '$street1', '$email', '$city', '$state', '$country', '$zip', $weight, $height, $width, $length, '$d_name', '$d_company', '$d_street1', '$d_phone', '$d_email', '$d_city', '$d_state', '$d_country', '$d_zip'  )";
+												$mysqli = new mysqli(DB_HOST,DB_USER, DB_PASS, DB_NAME);
+												$mysqli->set_charset("utf8");
+												$sql = "INSERT INTO `ci_cotacao` (`id`, `name`, `company`, `street1`, `email`, `city`, `state`, `country`, `zip`, `weight`, `height`, `width`, `length`, `d_company`, `d_street`, `d_phone`, `d_email`, `d_city`, `d_state`, `d_country`, `d_zip`) VALUES (NULL, '$name', '$company', '$street1', '$email', '$city', '$state', '$country', '$zip', $weight, $height, $width, $length, '$d_company', '$d_street1', '$d_phone', '$d_email', '$d_city', '$d_state', '$d_country', '$d_zip'  )";
 												$result = $mysqli -> query($sql);
 												$mysqli -> close();
 
-												//echo $sql ;
 
-												echo "Cadastro efetuado com sucesso!";
+												echo "Cotação feita com sucesso. Aguarde resposta do nosso consultor.";
 
-												
-												/*
-
-												#Shippo::setApiKey('shippo_live_83753381017589b6ef012e9814becaa25a77dddc');
-												Shippo::setApiKey('shippo_test_93f9dd4b3cc19aa98ff447d87b6508b461378e88');
-
-												// Example from_address array
-												// The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
-												$from_address = array(
-													'name' => $name,
-													'street1' => $street1,
-													'city' => $city,
-													'state' => $state,
-													'zip' => $zip,
-													'country' => $country,
-												);
-
-												// Example to_address array
-												// The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
-												$to_address = array(
-													'name' => $d_name,
-													'street1' => $d_street1,
-													'city' => $d_city,
-													'state' => $d_state,
-													'zip' => $d_zip,
-													'country' => $d_country,
-												);
-
-												// Parcel information array
-												// The complete reference for parcel object is here: https://goshippo.com/docs/reference#parcels
-
-												if ($optradio == '1') {
-													$parcel = array(
-														'length' => '2',
-														'width' => '2',
-														'height' => '2',
-														'distance_unit' => 'cm',
-														'weight' => '0.5',
-														'mass_unit' => 'kg',
-													);
-												} else {
-												$parcel = array(
-													'length' => $length,
-													'width' => $width,
-													'height' => $height,
-													'distance_unit' => 'cm',
-													'weight' => $weight,
-													'mass_unit' => 'kg',
-												);
-											}
-
-												// Example shipment object
-												// For complete reference to the shipment object: https://goshippo.com/docs/reference#shipments
-												// This object has async=false, indicating that the function will wait until all rates are generated before it returns.
-												// By default, Shippo handles responses asynchronously. However this will be depreciated soon. Learn more: https://goshippo.com/docs/async
-												$shipment = Shippo_Shipment::create(
-													array(
-														'address_from' => $from_address,
-														'address_to' => $to_address,
-														'parcels' => array($parcel),
-														'async' => false,
-													)
-												);
-
-												// Rates are stored in the `rates` array inside the shipment object
-												$rates = $shipment['rates'];
-
-												// You can now show those rates to the user in your UI.
-												// Most likely you want to show some of the following fields:
-												//  - provider (carrier name)
-												//  - servicelevel_name
-												//  - amount (price of label - you could add e.g. a 10% markup here)
-												//  - days (transit time)
-												// Don't forget to store the `object_id` of each Rate so that you can use it for the label purchase later.
-												// The details on all of the fields in the returned object are here: https://goshippo.com/docs/reference#rates
-												echo "<h3>Cotaçoes Disponíveis:" . "</h3>\n";
-												foreach ($rates as $rate) {
-													echo "<h5>" . $rate['provider'] . " - " . $rate['servicelevel']['name'] . "</h5>\n";
-													echo "<li>" . "Preço: $" . $rate['amount'] . "</li>";
-													//echo "<li>" . "Prazo para entregar: "   . $rate['days'] . "</li>";
-												}
-												echo "\n\n";
-
-												// This would be the index of the rate selected by the user
-												$selected_rate_index = count($rates) - 1;
-
-												// After the user has selected a rate, use the corresponding object_id
-												$selected_rate = $rates[$selected_rate_index];
-												$selected_rate_object_id = $selected_rate['object_id'];
-
-
-												// Purchase the desired rate with a transaction request
-												// Set async=false, indicating that the function will wait until the carrier returns a shipping label before it returns
-												$transaction = Shippo_Transaction::create(array(
-													'rate' => $selected_rate_object_id,
-													'async' => false,
-												));
-
-												// Print the shipping label from label_url
-												// Get the tracking number from tracking_number
-												if ($transaction['status'] == 'SUCCESS') {
-													echo "<h5>" . "Link para a etiqueta: </h5>\n <li><a href='" . $transaction['label_url'] . " target='_blank'> Clique aqui </a></li>\n";
-													echo "<li>" . "Código de rastreio: " . $transaction['tracking_number'] . "</li>\n";
-												} else {
-													echo "Transaction failed with messages:" . "\n";
-													foreach ($transaction['messages'] as $message) {
-														echo "--> " . $message . "\n";
-													}
-												}
-												// For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our
-												// complete documentation: https://goshippo.com/docs/
-
-												*/
+											
 												echo "<style>
 												#address-form {
 													display: none;
@@ -622,10 +515,6 @@ session_start();
 												<h5>Dados do Remetente</h5>
 
 
-												<div class="form-group">
-													<label for="exampleInputNome1">Nome</label>
-													<input type="text" class="form-control" id="name" name="name" required>
-												</div>
 
 												<div class="form-group">
 													<label for="Inputstreet1">Endereço</label>
@@ -655,137 +544,14 @@ session_start();
 
 												<div class="row">
 
-													<label>Enviar</label>
-													<div class="col-lg-7 col-md-7 col-sm-6 col-xs-8">
-														<div class="shipment_types">
-															<div class="type-input-container radiobutton-holder" style="padding-top: 10px;">
-																<div class="radio-inline">
-																	<label>
-																		<input value="1" name="optradio" type="radio" id="optradio" onclick="OcultForm" autocomplete="new-password" required> Documento
-																	</label>
-																</div>
-																<div class="radio-inline">
-																	<label>
-																		<input value="2" name="optradio" type="radio" id="optradio2" onclick="OcultForm1" autocomplete="new-password" required> Pacote
-																	</label>
-																</div>
-																<br><br>
-																<div class="col-md-12"></div>
-																<!-- content for each tab -->
-																
-															</div>
-														</div>
-													</div>
+													<p>&nbsp;</p>
+													
 												</div>
 
-
-												<div class="col-lg-8 col-lg-offset-3 col-md-8 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
-													<div class="col-md-12" style="padding-left:0px;padding-top: 10px;">
-
-														<div class="panel panel-default" id="document" style="display: none;">
-															<div class="panel-body">
-																<div class="row">
-																	<div class="col-lg-4 col-md-4 col-sm-3 col-xs-6 form-group">
-																		<label style="font-size: 10px;color:grey">Peso</label>
-																		<input type="text" name="weight" maxlength="6" id="weight" onkeypress="return valida(event)" class="form-control medium-view" style="width:80px" autocomplete="new-password">
-
-
-																	</div>
-																	<br>
-																	<div class="col-lg-4 col-md-4 col-sm-3 col-xs-6 form-group">
-																		<select name="weight_unit" id="ctl00_content_weight_unit" class="form-control medium-view" style="width:80px;">
-																			<option value="KG">KG</option>
-
-																		</select>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<div class="panel panel-default" id="paquet" style="display: block;">
-															<div class="panel-body">
-																<!--  Medidas paquetes-->
-																<div class="row">
-
-																	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-																		<div class="row">
-																			<label class="paq-cell" style="font-size: 10px;padding-left:20px">
-																				<span>Largura</span>
-																			</label>
-																		</div>
-																		<div class="row">
-																			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-																				<input name="width" type="text" maxlength="6" id="width" onkeypress="return valida(event)" class="form-control medium-view length js-integers" placeholder="cm" step="any" style="width:50px;">
-
-																			</div>
-																			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-																				<span style="padding-top: 15px;padding-left: 13px;font-size:14px" class="hidden-xs field-value">cm</span>
-																			</div>
-																		</div>
-																	</div>
-
-																	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-																		<div class="row">
-																			<label class="paq-cell" style="font-size: 10px;padding-left: 20px;">
-																				<span>Compr.</span>
-																			</label>
-																		</div>
-																		<div class="row">
-																			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-																				<input name="length" type="text" maxlength="6" id="length" onkeypress="return valida(event)" class="form-control medium-view length js-integers" placeholder="cm" step="any" style="width:50px;">
-
-																			</div>
-																			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-																				<span class="hidden-xs field-value">cm</span>
-																			</div>
-																		</div>
-																	</div>
-
-																	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-																		<div class="row">
-																			<label class="paq-cell" style="font-size: 10px;padding-left: 20px;">
-																				<span>Altura</span>
-																			</label>
-																		</div>
-																		<div class="row">
-																			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-																				<input name="height" type="text" maxlength="6" id="height" onkeypress="return valida(event)" class="form-control medium-view length js-integers" placeholder="cm" step="any" style="width:50px;">
-
-																			</div>
-																			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-																				<span class="hidden-xs field-value">cm</span>
-																			</div>
-																		</div>
-																	</div>
-
-																	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-																		<div class="row">
-																			<label class="paq-cell" style="font-size: 10px;padding-left: 20px;">
-																				<span>Peso</span>
-																			</label>
-																		</div>
-																		<div class="row">
-																			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-																				<input name="weight" type="text" maxlength="6" id="weight" onkeypress="return valida(event)" class="form-control medium-view length js-integers" placeholder="kg" step="any" style="width:50px;">
-
-																			</div>
-																			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-																				<span class="hidden-xs field-value">KG</span>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
 
 												<h5>Dados do Destinatário</h5>
 
-												<div class="form-group">
-													<label for="exampleInputNome1">Nome</label>
-													<input type="text" class="form-control" id="d_name" name="d_name" required>
-												</div>
+												
 
 												<div class="form-group">
 													<label for="Inputstreet1">Endereço</label>

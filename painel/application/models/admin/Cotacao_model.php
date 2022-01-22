@@ -11,6 +11,13 @@
 			
 		}
 
+		//---------------------------------------------------
+		// Get user detial by ID
+		public function get_cotacao_by_id($id){
+			$query = $this->db->get_where('ci_cotacao', array('id' => $id));
+			return $result = $query->row_array();
+		}
+
 
 
 
