@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once "painel/system/core/common.php";
+include_once "painel/system/core/Common.php";
 include_once "painel/system/core/compat/password.php";
 require_once(__DIR__ . '/config.php');
 
