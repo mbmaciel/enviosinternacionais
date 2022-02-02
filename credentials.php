@@ -3,8 +3,8 @@
 
 define('FEDEX_ACCOUNT_NUMBER', '740561073');
 define('FEDEX_METER_NUMBER', '1101234567');
-define('FEDEX_KEY', 'l74097977c92a94713a2d7bcc569f049ed');
-define('FEDEX_PASSWORD', '');
+define('FEDEX_KEY', 'l7312d077ac462464da23f9e455a86ac2b');
+define('FEDEX_PASSWORD', ''
 
 
 if (!defined('FEDEX_ACCOUNT_NUMBER') || !defined('FEDEX_METER_NUMBER') || !defined('FEDEX_KEY') || !defined('FEDEX_PASSWORD')) {
