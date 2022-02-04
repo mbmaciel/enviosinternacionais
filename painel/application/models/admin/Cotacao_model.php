@@ -18,6 +18,14 @@
 			return $result = $query->row_array();
 		}
 
+		//---------------------------------------------------
+		// Edit Cotacao Record
+		public function edit_cotacao($data, $id){
+			$this->db->where('id', $id);
+			$this->db->update('ci_cotacao', $data);
+			return true;
+		}
+
 
 
 

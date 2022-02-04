@@ -307,11 +307,6 @@ session_start();
 												require_once(__DIR__ . '/vendor/autoload.php');
 												require_once(__DIR__ . '/config.php');
 
-												$weight = 0;
-												$height = 0;
-												$width = 0;
-												$length = 0;
-
 												
 												$name = $_SESSION["username"] ?? "";
 												$company = $_REQUEST['company'];
@@ -324,12 +319,13 @@ session_start();
 
 												/*
 												$optradio = $_REQUEST['optradio'];
+												*/
 
 												$weight = $_REQUEST['weight'];
 												$height = $_REQUEST['height'];
 												$width = $_REQUEST['width'];
 												$length = $_REQUEST['length'];
-												*/
+
 
 												//$d_name = $_REQUEST['d_name'];
 												$d_company = $_REQUEST['d_company'];
@@ -344,6 +340,7 @@ session_start();
 												$mysqli = new mysqli(DB_HOST,DB_USER, DB_PASS, DB_NAME);
 												$mysqli->set_charset("utf8");
 												$sql = "INSERT INTO `ci_cotacao` (`id`, `name`, `company`, `street1`, `email`, `city`, `state`, `country`, `zip`, `weight`, `height`, `width`, `length`, `d_company`, `d_street`, `d_phone`, `d_email`, `d_city`, `d_state`, `d_country`, `d_zip`) VALUES (NULL, '$name', '$company', '$street1', '$email', '$city', '$state', '$country', '$zip', $weight, $height, $width, $length, '$d_company', '$d_street1', '$d_phone', '$d_email', '$d_city', '$d_state', '$d_country', '$d_zip'  )";
+
 												$result = $mysqli -> query($sql);
 												$mysqli -> close();
 
@@ -379,12 +376,8 @@ session_start();
 
 											?>
 
-
 											<form id="address-form" class="animated-fast" action="" autocomplete="off" method="POST">
-
 												<h5>Dados do Remetente</h5>
-
-
 
 												<div class="form-group">
 													<label for="Inputstreet1">Endereço</label>
@@ -410,6 +403,24 @@ session_start();
 												<div class="form-group">
 													<label for="pais">País</label>
 													<input type="text" class="form-control" id="country" name="country" required>
+												</div>
+
+												<div class="form-group">
+													<label for="pais">Largura / Altura / Comprimento / Peso</label>
+													<div class="row col-md-12">
+														<div class="col-md-3">
+															<input type="text" class="form-control" id="width" name="width" placeholder="largura cm" required>
+														</div>
+														<div class="col-md-3">
+															<input type="text" class="form-control" id="height" name="height" placeholder="altura cm" required>
+														</div>
+														<div class="col-md-3">
+															<input type="text" class="form-control" id="length" name="length" placeholder="comprimento cm" required>
+														</div>
+														<div class="col-md-3">
+															<input type="text" class="form-control" id="weight" name="weight" placeholder="peso kg" required>
+														</div>
+													</div>
 												</div>
 
 												<div class="row">

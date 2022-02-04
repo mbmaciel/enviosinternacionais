@@ -18,6 +18,8 @@
     </div>
 
     <h3>Endereço Origem</h3>
+    <?php $this->load->view('admin/includes/_messages.php') ?>
+    <?php echo form_open(base_url('admin/cotacao/edit/'.$cotacao['id']), 'class="form-horizontal"' )?> 
 
     <div class="form-group">
       <label for="username" class="col-md-2 control-label">Usuário</label>
@@ -66,6 +68,28 @@
       </div>
     </div>
 
+    <h3>Dados do pacote / embalagem enviada</h3>
+
+    <div class="form-group">
+      <label for="city" class="col-md-2 control-label">Largura, Altura, Comprimento e Peso</label>
+      
+      <div class="row col-md-12">
+      <div class="col-md-3">
+        <input type="text" name="width" value="<?= $cotacao['width']; ?>" class="form-control" id="width" placeholder="">
+      </div>
+      <div class="col-md-3">
+        <input type="text" name="height" value="<?= $cotacao['height']; ?>" class="form-control" id="height" placeholder="">
+      </div>
+      <div class="col-md-3">
+        <input type="text" name="length" value="<?= $cotacao['length']; ?>" class="form-control" id="length" placeholder="">
+      </div>
+      <div class="col-md-3">
+        <input type="text" name="weight" value="<?= $cotacao['weight']; ?>" class="form-control" id="weight" placeholder="">
+      </div>
+      </div>
+    </div>
+
+
     <h3>Endereço Destino</h3>
 
     <div class="form-group">
@@ -101,19 +125,36 @@
     </div>
 
     <div class="form-group">
-      <label for="d_city" class="col-md-2 control-label">CEP Destino</label>
+      <label for="d_city" class="col-md-6 control-label">CEP Destino</label>
 
       <div class="col-md-12">
         <input type="text" name="d_zip" value="<?= $cotacao['d_zip']; ?>" class="form-control" id="zip" placeholder="">
       </div>
     </div>
 
+    <div class="form-group">
+      <label for="d_city" class="col-md-6 control-label">Preço / Seguro / Desconto</label>
+      <div class="row col-md-12">
+      <div class="col-md-4">
+          <input type="text" name="preco" value="<?= $cotacao['preco']; ?>" class="form-control" id="preco" placeholder="Preço">
+      </div>
+      <div class="col-md-4">
+          <input type="text" name="seguro" value="<?= $cotacao['seguro']; ?>" class="form-control" id="seguro" placeholder="Seguro">
+      </div>
+      <div class="col-md-4">
+          <input type="text" name="desconto" value="<?= $cotacao['desconto']; ?>" class="form-control" id="desconto" placeholder="Desconto">
+      </div>
+      </div>
+    </div>
 
+    <div class="form-group">
+      <input type="submit" name="submit" value="Atualizar" class="btn btn-primary" />
+    </div>
 
 
   </section>
 </div>
-
+<?php echo form_close(); ?>
 
 <!-- DataTables -->
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
